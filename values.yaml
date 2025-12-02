@@ -15,56 +15,47 @@ global:
     REDIS_PORT: "6379"
     # Auth
     ALGORITHM: "HS256"
-
     DB_PASS: ""
     RABBIT_PASS: ""
     SECRET_KEY: ""
     GEMINI_KEY: ""
     PROXY_URL: ""
-
 imagePullSecrets:
   - name: ghcr-secret
-
 ingress:
   enabled: true
   className: "nginx"
   host: "team-13.kubepractice.ru"
   tls:
     secretName: "team13-tls"
-
 auth:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-auth
     pullPolicy: Always
     tag: "latest"
   port: 5002
-
 bff:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-bff
     pullPolicy: Always
-    tag: "latest"
+    tag: "sha-9d07a99"
   port: 8000
-
 habr:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-habr
     pullPolicy: Always
     tag: "latest"
   port: 5000
-
 llm:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-llm
     pullPolicy: Always
     tag: "latest"
   port: 5001
-
 rabbitmq:
   image: rabbitmq:3.12-management
   port: 5672
   uiPort: 15672
-
 redis:
   image: redis:7-alpine
   port: 6379
