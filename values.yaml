@@ -44,7 +44,7 @@ habr:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-habr
     pullPolicy: Always
-    tag: "latest"
+    tag: "sha-9d07a99"
   port: 5000
 llm:
   image:
