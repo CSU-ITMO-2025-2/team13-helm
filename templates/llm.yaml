@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: llm-service
-          image: {{ .Values.llm.image }}
+          image: "{{ .Values.llm.image.repository }}:{{ .Values.llm.image.tag }}"
+          imagePullPolicy: {{ .Values.llm.image.pullPolicy }}
           command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "{{ .Values.llm.port }}"]
           ports:
             - containerPort: {{ .Values.llm.port }}

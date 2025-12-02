@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: bff-service
-          image: {{ .Values.bff.image }}
-          imagePullPolicy: Always
+          image: "{{ .Values.bff.image.repository }}:{{ .Values.bff.image.tag }}"
+          imagePullPolicy: {{ .Values.bff.image.pullPolicy }}
           command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "{{ .Values.bff.port }}"]
           ports:
             - containerPort: {{ .Values.bff.port }}

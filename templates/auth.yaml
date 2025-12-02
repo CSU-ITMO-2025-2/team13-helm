@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: {{ .Values.auth.image }}
-          imagePullPolicy: Always
+          image: "{{ .Values.auth.image.repository }}:{{ .Values.auth.image.tag }}"
+          imagePullPolicy: {{ .Values.auth.image.pullPolicy }}
           command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "{{ .Values.auth.port }}"]
           ports:
             - containerPort: {{ .Values.auth.port }}

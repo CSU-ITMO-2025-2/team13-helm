@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: habr-adapter
-          image: {{ .Values.habr.image }}
+          image: "{{ .Values.habr.image.repository }}:{{ .Values.habr.image.tag }}"
+          imagePullPolicy: {{ .Values.habr.image.pullPolicy }}
           command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "{{ .Values.habr.port }}"]
           ports:
             - containerPort: {{ .Values.habr.port }}
