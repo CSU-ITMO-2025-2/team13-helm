@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: llm-consumer
-          image: {{ .Values.llm.image }}
+          image: "{{ .Values.llm.image.repository }}:{{ .Values.llm.image.tag }}"
+          imagePullPolicy: {{ .Values.llm.image.pullPolicy }}
           command: ["python", "consumer.py"]
           env:
             - name: RABBITMQ_HOST
