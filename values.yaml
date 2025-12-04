@@ -32,7 +32,7 @@ auth:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-auth
     pullPolicy: Always
-    tag: "sha-9d07a99"
+    tag: "sha-2022fe7"
   port: 5002
 bff:
   image:
