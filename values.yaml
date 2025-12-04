@@ -38,7 +38,7 @@ bff:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-bff
     pullPolicy: Always
-    tag: "sha-9d07a99"
+    tag: "sha-2022fe7"
   port: 8000
 habr:
   image:
