@@ -18,9 +18,10 @@ spec:
           ports:
             - containerPort: {{ .Values.rabbitmq.port }}
             - containerPort: {{ .Values.rabbitmq.uiPort }}
+          envFrom:
+            - configMapRef:
+                name: rabbitmq-config
           env:
-            - name: RABBITMQ_DEFAULT_USER
-              value: {{ .Values.global.env.RABBIT_USER | quote }}
             - name: RABBITMQ_DEFAULT_PASS
               valueFrom:
                 secretKeyRef:
