@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bff-config
+  namespace: team13-ns
+data:
+  AUTH_SERVICE_BASE_URL: "http://auth-service:5002"
+  HABR_ADAPTER_BASE_URL: "http://habr-adapter:5000"
+  LLM_SERVICE_BASE_URL: "http://llm-service:5001"
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
+  RABBITMQ_USER: "user"
+  ARTICLE_QUEUE_NAME: "articles_queue"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  POSTGRES_HOST: "79.174.89.43"
+  POSTGRES_PORT: "18809"
+  POSTGRES_DB: "team13_db"
+  POSTGRES_USER: "team13"

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: llm-service-config
+  namespace: team13-ns
+data:
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
+  RABBITMQ_USER: "user"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"

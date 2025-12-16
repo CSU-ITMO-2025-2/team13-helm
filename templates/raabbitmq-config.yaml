@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: raabbitmq-config
+  namespace: team13-ns
+data:
+  RABBITMQ_DEFAULT_USER: "user"

@@ -19,31 +19,20 @@ spec:
           command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "{{ .Values.auth.port }}"]
           ports:
             - containerPort: {{ .Values.auth.port }}
-          env:
-            - name: POSTGRES_HOST
-              value: {{ .Values.global.env.DB_HOST | quote }}
-            - name: POSTGRES_PORT
-              value: {{ .Values.global.env.DB_PORT | quote }}
-            - name: POSTGRES_DB
-              value: {{ .Values.global.env.DB_NAME | quote }}
-            - name: POSTGRES_USER
-              value: {{ .Values.global.env.DB_USER | quote }}
+          envFrom:
+          - configMapRef:
+              name: auth-config
+          env:            
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: postgres-password
-            - name: REDIS_HOST
-              value: {{ .Values.global.env.REDIS_HOST | quote }}
-            - name: REDIS_PORT
-              value: {{ .Values.global.env.REDIS_PORT | quote }}
-            - name: ALGORITHM
-              value: {{ .Values.global.env.ALGORITHM | quote }}
+                  key: POSTGRES_PASSWORD
+                  name: team13-config
             - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: secret-key
+                  key: SECRET_KEY
+                  name: team13-config
           resources:
             requests:
               cpu: "100m"
