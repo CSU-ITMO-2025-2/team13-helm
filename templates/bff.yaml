@@ -23,16 +23,17 @@ spec:
             - configMapRef:
                 name: bff-config
           env:
-            - name: RABBITMQ_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: rabbitmq-password
-                  name: team13-secrets
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: postgres-password
-                  name: team13-secrets
+                  key: POSTGRES_PASSWORD
+                  name: team13-config
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: RABBITMQ_PASSWORD
+                  name: team13-config
+
           resources:
             requests:
               cpu: "100m"

@@ -24,18 +24,18 @@ spec:
             - name: RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: rabbitmq-password
-                  name: team13-secrets
+                  key: RABBITMQ_PASSWORD
+                  name: team13-config
             - name: GEMINI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  key: gemini-api-key
-                  name: team13-secrets
+                  key: GEMINI_API_KEY
+                  name: team13-config
             - name: PROXY_URL
               valueFrom:
                 secretKeyRef:
-                  key: proxy-url
-                  name: team13-secrets
+                  key: PROXY_URL
+                  name: team13-config
           resources:
             requests:
               cpu: "100m"
