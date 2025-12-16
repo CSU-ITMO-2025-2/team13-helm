@@ -37,7 +37,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: PROXY_URL
-                  name: team13-confi
+                  name: team13-config
           resources:
             requests:
               cpu: "100m"
