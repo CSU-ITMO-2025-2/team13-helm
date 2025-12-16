@@ -17,32 +17,25 @@ spec:
           image: "{{ .Values.llm.image.repository }}:{{ .Values.llm.image.tag }}"
           imagePullPolicy: {{ .Values.llm.image.pullPolicy }}
           command: ["python", "consumer.py"]
+          envFrom:
+            - configMapRef:
+                name: llm-consumer-config
           env:
-            - name: RABBITMQ_HOST
-              value: {{ .Values.global.env.RABBIT_HOST | quote }}
-            - name: RABBITMQ_PORT
-              value: {{ .Values.global.env.RABBIT_PORT | quote }}
-            - name: RABBITMQ_USER
-              value: {{ .Values.global.env.RABBIT_USER | quote }}
             - name: RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: rabbitmq-password
-            - name: REDIS_HOST
-              value: {{ .Values.global.env.REDIS_HOST | quote }}
-            - name: REDIS_PORT
-              value: {{ .Values.global.env.REDIS_PORT | quote }}
+                  key: RABBITMQ_PASSWORD
+                  name: team13-config
             - name: GEMINI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: gemini-api-key
+                  key: GEMINI_API_KEY
+                  name: team13-config
             - name: PROXY_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: proxy-url
+                  key: PROXY_URL
+                  name: team13-config
           resources:
             requests:
               cpu: "100m"
