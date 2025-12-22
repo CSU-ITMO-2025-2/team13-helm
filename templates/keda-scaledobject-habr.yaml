@@ -13,11 +13,11 @@ spec:
   triggers:
     - type: cpu
       metadata:
-        type: Utilization
+        metricType: Utilization
         value: {{ .Values.keda.habr.cpuThreshold | default "70" | quote }}
     - type: memory
       metadata:
-        type: Utilization
+        metricType: Utilization
         value: {{ .Values.keda.habr.memoryThreshold | default "80" | quote }}
 {{- end }}
 
