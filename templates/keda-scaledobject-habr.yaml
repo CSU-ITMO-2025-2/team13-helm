@@ -1,0 +1,23 @@
+{{- if .Values.keda.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: habr-adapter-scaler
+spec:
+  scaleTargetRef:
+    name: habr-adapter
+  minReplicaCount: {{ .Values.keda.habr.minReplicas | default 1 }}
+  maxReplicaCount: {{ .Values.keda.habr.maxReplicas | default 5 }}
+  pollingInterval: {{ .Values.keda.habr.pollingInterval | default 30 }}
+  cooldownPeriod: {{ .Values.keda.habr.cooldownPeriod | default 300 }}
+  triggers:
+    - type: cpu
+      metadata:
+        type: Utilization
+        value: {{ .Values.keda.habr.cpuThreshold | default "70" }}
+    - type: memory
+      metadata:
+        type: Utilization
+        value: {{ .Values.keda.habr.memoryThreshold | default "80" }}
+{{- end }}
+

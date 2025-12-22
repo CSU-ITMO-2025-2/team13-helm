@@ -1,0 +1,34 @@
+{{- if .Values.keda.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: llm-consumer-scaler
+spec:
+  scaleTargetRef:
+    name: llm-consumer
+  minReplicaCount: {{ .Values.keda.llmConsumer.minReplicas | default 1 }}
+  maxReplicaCount: {{ .Values.keda.llmConsumer.maxReplicas | default 10 }}
+  pollingInterval: {{ .Values.keda.llmConsumer.pollingInterval | default 30 }}
+  cooldownPeriod: {{ .Values.keda.llmConsumer.cooldownPeriod | default 300 }}
+  triggers:
+    - type: rabbitmq
+      metadata:
+        queueName: {{ .Values.global.env.QUEUE_NAME | default "articles_queue" }}
+        host: {{ .Values.global.env.RABBIT_HOST | default "rabbitmq" }}:{{ .Values.global.env.RABBIT_PORT | default "5672" }}
+        queueLength: {{ .Values.keda.llmConsumer.queueLength | default "5" }}
+        vhostName: "/"
+        username: {{ .Values.global.env.RABBIT_USER | default "user" }}
+      authenticationRef:
+        name: keda-trigger-auth-rabbitmq
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-trigger-auth-rabbitmq
+spec:
+  secretTargetRef:
+    - parameter: password
+      name: team13-config
+      key: RABBITMQ_PASSWORD
+{{- end }}
+
