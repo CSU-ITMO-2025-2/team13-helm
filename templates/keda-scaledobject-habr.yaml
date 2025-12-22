@@ -12,12 +12,12 @@ spec:
   cooldownPeriod: {{ .Values.keda.habr.cooldownPeriod | default 300 }}
   triggers:
     - type: cpu
-      metadata:
-        metricType: Utilization
+      metricType: Utilization
+      metadata:  
         value: {{ .Values.keda.habr.cpuThreshold | default "70" | quote }}
     - type: memory
+      metricType: Utilization
       metadata:
-        metricType: Utilization
         value: {{ .Values.keda.habr.memoryThreshold | default "80" | quote }}
 {{- end }}
 
