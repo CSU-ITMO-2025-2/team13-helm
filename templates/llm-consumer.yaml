@@ -42,4 +42,34 @@ spec:
               memory: "128Mi"
             limits:
               cpu: "300m"
-              memory: "512Mi" 
+              memory: "512Mi"
+          startupProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - "ps aux | grep -v grep | grep consumer.py"
+            initialDelaySeconds: {{ .Values.probes.exec.startup.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.exec.startup.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.exec.startup.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.exec.startup.failureThreshold }}
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - "ps aux | grep -v grep | grep consumer.py"
+            initialDelaySeconds: {{ .Values.probes.exec.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.exec.readiness.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.exec.readiness.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.exec.readiness.failureThreshold }}
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - "ps aux | grep -v grep | grep consumer.py"
+            initialDelaySeconds: {{ .Values.probes.exec.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.exec.liveness.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.exec.liveness.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.exec.liveness.failureThreshold }} 
