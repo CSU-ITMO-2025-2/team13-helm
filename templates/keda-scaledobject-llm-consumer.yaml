@@ -14,10 +14,9 @@ spec:
     - type: rabbitmq
       metadata:
         queueName: {{ .Values.global.env.QUEUE_NAME | default "articles_queue" }}
-        host: {{ .Values.global.env.RABBIT_HOST | default "rabbitmq" }}:{{ .Values.global.env.RABBIT_PORT | default "5672" }}
+        host: amqp://{{ .Values.global.env.RABBIT_HOST | default "rabbitmq" }}:{{ .Values.global.env.RABBIT_PORT | default "5672" }}
         queueLength: {{ .Values.keda.llmConsumer.queueLength | default "5" | quote }}
         vhostName: "/"
-        username: {{ .Values.global.env.RABBIT_USER | default "user" }}
       authenticationRef:
         name: keda-trigger-auth-rabbitmq
 ---
