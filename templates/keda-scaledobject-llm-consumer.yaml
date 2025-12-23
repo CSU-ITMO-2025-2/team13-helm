@@ -27,6 +27,9 @@ metadata:
   name: keda-trigger-auth-rabbitmq
 spec:
   secretTargetRef:
+    - parameter: username
+      name: team13-config
+      key: RABBITMQ_USER
     - parameter: password
       name: team13-config
       key: RABBITMQ_PASSWORD
