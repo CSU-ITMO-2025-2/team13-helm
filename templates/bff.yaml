@@ -40,7 +40,31 @@ spec:
               memory: "128Mi"
             limits:
               cpu: "300m"
-              memory: "512Mi" 
+              memory: "512Mi"
+          startupProbe:
+            httpGet:
+              path: {{ .Values.probes.http.healthPath | default "/health" }}
+              port: {{ .Values.bff.port }}
+            initialDelaySeconds: {{ .Values.probes.http.startup.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.http.startup.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.http.startup.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.http.startup.failureThreshold }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probes.http.healthPath | default "/health" }}
+              port: {{ .Values.bff.port }}
+            initialDelaySeconds: {{ .Values.probes.http.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.http.readiness.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.http.readiness.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.http.readiness.failureThreshold }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probes.http.healthPath | default "/health" }}
+              port: {{ .Values.bff.port }}
+            initialDelaySeconds: {{ .Values.probes.http.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.http.liveness.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.http.liveness.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.http.liveness.failureThreshold }} 
 ---
 apiVersion: v1
 kind: Service
