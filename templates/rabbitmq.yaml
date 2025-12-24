@@ -39,28 +39,28 @@ spec:
               command:
                 - rabbitmq-diagnostics
                 - ping
-            initialDelaySeconds: {{ .Values.probes.exec.startup.initialDelaySeconds }}
-            periodSeconds: {{ .Values.probes.exec.startup.periodSeconds }}
-            timeoutSeconds: {{ .Values.probes.exec.startup.timeoutSeconds }}
-            failureThreshold: {{ .Values.probes.exec.startup.failureThreshold }}
+            initialDelaySeconds: {{ .Values.rabbitmq.probes.startup.initialDelaySeconds | default 30 }}
+            periodSeconds: {{ .Values.rabbitmq.probes.startup.periodSeconds | default 10 }}
+            timeoutSeconds: {{ .Values.rabbitmq.probes.startup.timeoutSeconds | default 10 }}
+            failureThreshold: {{ .Values.rabbitmq.probes.startup.failureThreshold | default 30 }}
           readinessProbe:
             exec:
               command:
                 - rabbitmq-diagnostics
                 - ping
-            initialDelaySeconds: {{ .Values.probes.exec.readiness.initialDelaySeconds }}
-            periodSeconds: {{ .Values.probes.exec.readiness.periodSeconds }}
-            timeoutSeconds: {{ .Values.probes.exec.readiness.timeoutSeconds }}
-            failureThreshold: {{ .Values.probes.exec.readiness.failureThreshold }}
+            initialDelaySeconds: {{ .Values.rabbitmq.probes.readiness.initialDelaySeconds | default 10 }}
+            periodSeconds: {{ .Values.rabbitmq.probes.readiness.periodSeconds | default 5 }}
+            timeoutSeconds: {{ .Values.rabbitmq.probes.readiness.timeoutSeconds | default 10 }}
+            failureThreshold: {{ .Values.rabbitmq.probes.readiness.failureThreshold | default 3 }}
           livenessProbe:
             exec:
               command:
                 - rabbitmq-diagnostics
                 - ping
-            initialDelaySeconds: {{ .Values.probes.exec.liveness.initialDelaySeconds }}
-            periodSeconds: {{ .Values.probes.exec.liveness.periodSeconds }}
-            timeoutSeconds: {{ .Values.probes.exec.liveness.timeoutSeconds }}
-            failureThreshold: {{ .Values.probes.exec.liveness.failureThreshold }}
+            initialDelaySeconds: {{ .Values.rabbitmq.probes.liveness.initialDelaySeconds | default 60 }}
+            periodSeconds: {{ .Values.rabbitmq.probes.liveness.periodSeconds | default 10 }}
+            timeoutSeconds: {{ .Values.rabbitmq.probes.liveness.timeoutSeconds | default 10 }}
+            failureThreshold: {{ .Values.rabbitmq.probes.liveness.failureThreshold | default 3 }}
 ---
 apiVersion: v1
 kind: Service
