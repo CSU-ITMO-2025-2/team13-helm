@@ -1,0 +1,128 @@
+{{- if .Values.podDisruptionBudget.enabled }}
+{{- if .Values.podDisruptionBudget.auth.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: auth-service-pdb
+spec:
+  selector:
+    matchLabels:
+      app: auth-service
+  {{- if .Values.podDisruptionBudget.auth.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.auth.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.auth.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.auth.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.bff.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: bff-service-pdb
+spec:
+  selector:
+    matchLabels:
+      app: bff-service
+  {{- if .Values.podDisruptionBudget.bff.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.bff.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.bff.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.bff.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.habr.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: habr-adapter-pdb
+spec:
+  selector:
+    matchLabels:
+      app: habr-adapter
+  {{- if .Values.podDisruptionBudget.habr.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.habr.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.habr.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.habr.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.llm.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: llm-service-pdb
+spec:
+  selector:
+    matchLabels:
+      app: llm-service
+  {{- if .Values.podDisruptionBudget.llm.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.llm.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.llm.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.llm.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.llmConsumer.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: llm-consumer-pdb
+spec:
+  selector:
+    matchLabels:
+      app: llm-consumer
+  {{- if .Values.podDisruptionBudget.llmConsumer.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.llmConsumer.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.llmConsumer.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.llmConsumer.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.rabbitmq.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: rabbitmq-pdb
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq
+  {{- if .Values.podDisruptionBudget.rabbitmq.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.rabbitmq.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.rabbitmq.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.rabbitmq.maxUnavailable }}
+  {{- end }}
+{{- end }}
+
+{{- if .Values.podDisruptionBudget.redis.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-pdb
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  {{- if .Values.podDisruptionBudget.redis.minAvailable }}
+  minAvailable: {{ .Values.podDisruptionBudget.redis.minAvailable }}
+  {{- end }}
+  {{- if .Values.podDisruptionBudget.redis.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.redis.maxUnavailable }}
+  {{- end }}
+{{- end }}
+{{- end }}
+
