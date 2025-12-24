@@ -9,7 +9,7 @@ global:
     RABBIT_USER: "user"
     RABBIT_HOST: "rabbitmq"
     RABBIT_PORT: "5672"
-    QUEUE_NAME: "articles_queue" # ARTICLE_QUEUE_NAME
+    QUEUE_NAME: "article_queue" # ARTICLE_QUEUE_NAME
     # Redis
     REDIS_HOST: "redis"
     REDIS_PORT: "6379"
@@ -56,6 +56,22 @@ rabbitmq:
   image: rabbitmq:3.12-management
   port: 5672
   uiPort: 15672
+  probes:
+    startup:
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      timeoutSeconds: 10
+      failureThreshold: 30
+    readiness:
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      timeoutSeconds: 10
+      failureThreshold: 3
+    liveness:
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      timeoutSeconds: 10
+      failureThreshold: 3
 redis:
   image: redis:7-alpine
   port: 6379

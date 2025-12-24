@@ -10,7 +10,7 @@ data:
   RABBITMQ_HOST: "rabbitmq"
   RABBITMQ_PORT: "5672"
   RABBITMQ_USER: "user"
-  ARTICLE_QUEUE_NAME: "articles_queue"
+  ARTICLE_QUEUE_NAME: "article_queue"
   REDIS_HOST: "redis"
   REDIS_PORT: "6379"
   POSTGRES_HOST: "79.174.89.43"
