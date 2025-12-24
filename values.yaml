@@ -124,3 +124,26 @@ probes:
       periodSeconds: 10
       timeoutSeconds: 3
       failureThreshold: 3
+podDisruptionBudget:
+  enabled: true
+  auth:
+    enabled: true
+    minAvailable: 1
+  bff:
+    enabled: true
+    minAvailable: 1
+  habr:
+    enabled: true
+    minAvailable: 1
+  llm:
+    enabled: true
+    minAvailable: 1
+  llmConsumer:
+    enabled: true
+    minAvailable: 1
+  rabbitmq:
+    enabled: true
+    minAvailable: 1
+  redis:
+    enabled: true
+    minAvailable: 1
