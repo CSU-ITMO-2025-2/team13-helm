@@ -38,7 +38,7 @@ spec:
             exec:
               command:
                 - rabbitmq-diagnostics
-                - ping
+                - status
             initialDelaySeconds: {{ .Values.rabbitmq.probes.startup.initialDelaySeconds | default 30 }}
             periodSeconds: {{ .Values.rabbitmq.probes.startup.periodSeconds | default 10 }}
             timeoutSeconds: {{ .Values.rabbitmq.probes.startup.timeoutSeconds | default 10 }}
