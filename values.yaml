@@ -35,6 +35,9 @@ llm:
     tag: "sha-a043c5b"
   port: 5001
   baseUrl: "http://llm-service:5001"
+  llmRateLimitPerMinute: 10
+  llmMaxHourlyRequests: 240
+
 rabbitmq:
   image: rabbitmq:3.12-management
   user: "user"

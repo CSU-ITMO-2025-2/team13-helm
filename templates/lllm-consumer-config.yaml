@@ -10,3 +10,5 @@ data:
   REDIS_HOST: {{ .Values.redis.host | quote }}
   REDIS_PORT: {{ .Values.redis.port | quote }}
   ARTICLE_QUEUE_NAME: "{{ .Values.rabbitmq.queueName }}"
+  LLM_RATE_LIMIT: {{ .Values.llm.llmRateLimitPerMinute | quote }}
+  LLM_HOURLY_LIMIT: {{ .Values.llm.llmMaxHourlyRequests | quote }}
