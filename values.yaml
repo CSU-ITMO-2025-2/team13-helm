@@ -28,7 +28,7 @@ llm:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-llm
     pullPolicy: Always
-    tag: "sha-9d07a99"
+    tag: "sha-adb90ed"
   port: 5001
 rabbitmq:
   image: rabbitmq:3.12-management
