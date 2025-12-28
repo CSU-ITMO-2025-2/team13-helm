@@ -38,6 +38,11 @@ spec:
                 secretKeyRef:
                   key: PROXY_URL
                   name: team13-config
+            - name: LLM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: LLM_API_KEY
+                  name: team13-config
           resources:
             requests:
               cpu: "100m"

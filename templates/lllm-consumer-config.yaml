@@ -9,3 +9,4 @@ data:
   RABBITMQ_USER: "user"
   REDIS_HOST: "redis"
   REDIS_PORT: "6379"
+  ARTICLE_QUEUE_NAME: "article_queue"
