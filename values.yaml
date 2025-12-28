@@ -1,5 +1,6 @@
 imagePullSecrets:
   - name: ghcr-secret
+namespace: "team13-ns" 
 ingress:
   enabled: true
   className: "nginx"
@@ -12,6 +13,8 @@ auth:
     pullPolicy: Always
     tag: "sha-2022fe7"
   port: 5002
+  algorithm: "HS256"
+  baseUrl: "http://auth-service:5002"
 bff:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-bff
@@ -24,16 +27,19 @@ habr:
     pullPolicy: Always
     tag: "sha-9d07a99"
   port: 5000
+  baseUrl: "http://habr-adapter:5000"
 llm:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-llm
     pullPolicy: Always
     tag: "sha-adb90ed"
   port: 5001
+  baseUrl: "http://llm-service:5001"
 rabbitmq:
   image: rabbitmq:3.12-management
+  user: "user"
+  host: "rabbitmq"
   queueName: "article_queue"
-  rabbitPort: 5672
   port: 5672
   uiPort: 15672
   probes:
@@ -54,7 +60,13 @@ rabbitmq:
       failureThreshold: 3
 redis:
   image: redis:7-alpine
+  host: "redis"
   port: 6379
+postgres:
+  host: "79.174.89.43"
+  port: "18809"
+  dbName: "team13_db"
+  user: "team13"
 keda:
   enabled: true
   llmConsumer:

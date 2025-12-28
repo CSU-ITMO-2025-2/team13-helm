@@ -4,4 +4,4 @@ metadata:
   name: rabbitmq-config
   namespace: team13-ns
 data:
-  RABBITMQ_DEFAULT_USER: "user"
+  RABBITMQ_DEFAULT_USER: {{ .Values.rabbitmq.user | quote }}

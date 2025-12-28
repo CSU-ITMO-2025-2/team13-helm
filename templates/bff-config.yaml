@@ -4,16 +4,16 @@ metadata:
   name: bff-config
   namespace: team13-ns
 data:
-  AUTH_SERVICE_BASE_URL: "http://auth-service:5002"
-  HABR_ADAPTER_BASE_URL: "http://habr-adapter:5000"
-  LLM_SERVICE_BASE_URL: "http://llm-service:5001"
-  RABBITMQ_HOST: "rabbitmq"
-  RABBITMQ_PORT: "5672"
-  RABBITMQ_USER: "user"
-  ARTICLE_QUEUE_NAME: "article_queue"
-  REDIS_HOST: "redis"
-  REDIS_PORT: "6379"
-  POSTGRES_HOST: "79.174.89.43"
-  POSTGRES_PORT: "18809"
-  POSTGRES_DB: "team13_db"
-  POSTGRES_USER: "team13"
+  AUTH_SERVICE_BASE_URL: {{ .Values.auth.baseUrl | quote }}
+  HABR_ADAPTER_BASE_URL: {{ .Values.habr.baseUrl | quote }}
+  LLM_SERVICE_BASE_URL: {{ .Values.llm.baseUrl | quote }}
+  RABBITMQ_HOST: {{ .Values.rabbitmq.host | quote }}
+  RABBITMQ_PORT: {{ .Values.rabbitmq.port | quote }}
+  RABBITMQ_USER: {{ .Values.rabbitmq.user | quote }}
+  ARTICLE_QUEUE_NAME: {{ .Values.rabbitmq.queueName | quote }}
+  REDIS_HOST: {{ .Values.redis.host | quote }}
+  REDIS_PORT: {{ .Values.redis.port | quote }}
+  POSTGRES_HOST: {{ .Values.postgres.host | quote }}
+  POSTGRES_PORT: {{ .Values.postgres.port | quote }}
+  POSTGRES_DB: {{ .Values.postgres.dbName | quote }}
+  POSTGRES_USER: {{ .Values.postgres.user | quote }}

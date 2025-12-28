@@ -4,9 +4,9 @@ metadata:
   name: llm-consumer-config
   namespace: team13-ns
 data:
-  RABBITMQ_HOST: "rabbitmq"
-  RABBITMQ_PORT: "5672"
-  RABBITMQ_USER: "user"
-  REDIS_HOST: "redis"
-  REDIS_PORT: "6379"
+  RABBITMQ_HOST: {{ .Values.rabbitmq.host | quote }}
+  RABBITMQ_PORT: {{ .Values.rabbitmq.port | quote }}
+  RABBITMQ_USER: {{ .Values.rabbitmq.user | quote }}
+  REDIS_HOST: {{ .Values.redis.host | quote }}
+  REDIS_PORT: {{ .Values.redis.port | quote }}
   ARTICLE_QUEUE_NAME: "{{ .Values.rabbitmq.queueName }}"
