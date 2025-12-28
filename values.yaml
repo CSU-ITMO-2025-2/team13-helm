@@ -11,7 +11,7 @@ auth:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-auth
     pullPolicy: Always
-    tag: "sha-2022fe7"
+    tag: "sha-a043c5b"
   port: 5002
   algorithm: "HS256"
   baseUrl: "http://auth-service:5002"
