@@ -14,7 +14,7 @@ spec:
     - type: rabbitmq
       metadata:
         queueName: {{ .Values.rabbitmq.queueName | default "article_queue" }}
-        host: amqp://rabbitmq.team13-ns.svc.cluster.local:{{ .Values.rabbitmq.rabbitPort | default "5672" }}
+        host: amqp://rabbitmq.team13-ns.svc.cluster.local:{{ .Values.rabbitmq.port | default "5672" }}
         queueLength: {{ .Values.keda.llmConsumer.queueLength | default "5" | quote }}
         vhostName: "/"
       authenticationRef:
