@@ -25,7 +25,7 @@ habr:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-habr
     pullPolicy: Always
-    tag: "sha-9d07a99"
+    tag: "sha-a043c5b"
   port: 5000
   baseUrl: "http://habr-adapter:5000"
 llm:
