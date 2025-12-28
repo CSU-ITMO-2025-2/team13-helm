@@ -1,6 +1,6 @@
 imagePullSecrets:
   - name: ghcr-secret
-namespace: "team13-ns" 
+namespace: "team13-ns"
 ingress:
   enabled: true
   className: "nginx"
@@ -19,7 +19,7 @@ bff:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-bff
     pullPolicy: Always
-    tag: "sha-adb90ed"
+    tag: "sha-2a4c955"
   port: 8000
 habr:
   image:
