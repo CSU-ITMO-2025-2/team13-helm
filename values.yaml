@@ -33,6 +33,7 @@ llm:
 rabbitmq:
   image: rabbitmq:3.12-management
   queueName: "article_queue"
+  rabbitPort: 5672
   port: 5672
   uiPort: 15672
   probes:
