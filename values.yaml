@@ -32,7 +32,7 @@ llm:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-llm
     pullPolicy: Always
-    tag: "sha-adb90ed"
+    tag: "sha-a043c5b"
   port: 5001
   baseUrl: "http://llm-service:5001"
 rabbitmq:
