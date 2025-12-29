@@ -32,12 +32,11 @@ llm:
   image:
     repository: ghcr.io/csu-itmo-2025-2/team13-llm
     pullPolicy: Always
-    tag: "sha-a043c5b"
+    tag: "sha-880e7b9"
   port: 5001
   baseUrl: "http://llm-service:5001"
   llmRateLimitPerMinute: 10
   llmMaxHourlyRequests: 240
-
 rabbitmq:
   image: rabbitmq:3.12-management
   user: "user"
